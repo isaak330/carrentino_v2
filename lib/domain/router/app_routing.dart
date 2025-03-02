@@ -1,0 +1,34 @@
+import 'package:carrentino_v2/app/screen/favorites_screen.dart';
+import 'package:carrentino_v2/app/screen/home/home_screen.dart';
+import 'package:carrentino_v2/app/screen/root_screen.dart';
+import 'package:carrentino_v2/app/screen/user/user_screen.dart';
+import 'package:go_router/go_router.dart';
+
+final router = GoRouter(
+  initialLocation: '/home',
+  routes: [
+    StatefulShellRoute.indexedStack(
+      builder: (context, state, navigationShell) => RootScreen(navigationShell: navigationShell,),
+      branches: [
+        StatefulShellBranch(
+          routes: [
+            GoRoute(path: '/home', builder: (context, state) => HomeScreen()),
+          ],
+        ),
+        StatefulShellBranch(
+          routes: [
+            GoRoute(
+              path: '/favorites',
+              builder: (context, state) => FavoritesScreen(),
+            ),
+          ],
+        ),
+        StatefulShellBranch(
+          routes: [
+            GoRoute(path: '/user', builder: (context, state) => UserScreen()),
+          ],
+        ),
+      ],
+    ),
+  ],
+);
