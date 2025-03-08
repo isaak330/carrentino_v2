@@ -12,7 +12,7 @@ final router = GoRouter(
       branches: [
         StatefulShellBranch(
           routes: [
-            GoRoute(path: '/home', builder: (context, state) => HomeScreen()),
+            GoRoute(path: '/home', builder: (context, state) => HomeScreen(),),
           ],
         ),
         StatefulShellBranch(
@@ -25,7 +25,17 @@ final router = GoRouter(
         ),
         StatefulShellBranch(
           routes: [
-            GoRoute(path: '/user', builder: (context, state) => UserScreen()),
+            GoRoute(path: '/order', builder: (context, state) => UserScreen(),),
+          ],
+        ),
+        StatefulShellBranch(
+          routes: [
+            GoRoute(path: '/chat', builder: (context, state) => UserScreen(),),
+          ],
+        ),
+        StatefulShellBranch(
+          routes: [
+            GoRoute(path: '/user', builder: (context, state) => UserScreen(),),
           ],
         ),
       ],
