@@ -1,4 +1,4 @@
-import 'package:carrentino_v2/static/image_base.dart';
+import 'package:carrentino_v2/src/static/image_base.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 

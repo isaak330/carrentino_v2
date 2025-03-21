@@ -1,7 +1,7 @@
-import 'package:carrentino_v2/app/screen/favorites_screen.dart';
-import 'package:carrentino_v2/app/screen/home/home_screen.dart';
-import 'package:carrentino_v2/app/screen/root_screen.dart';
-import 'package:carrentino_v2/app/screen/user/user_screen.dart';
+import 'package:carrentino_v2/src/app/screen/favorites_screen.dart';
+import 'package:carrentino_v2/src/app/screen/home/home_screen.dart';
+import 'package:carrentino_v2/src/app/screen/root_screen.dart';
+import 'package:carrentino_v2/src/app/screen/user/user_screen.dart';
 import 'package:go_router/go_router.dart';
 
 final router = GoRouter(

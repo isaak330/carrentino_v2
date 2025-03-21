@@ -5,4 +5,5 @@ final class ImageBase {
   static const plusIcon = 'assets/nav_bar/plus_icon.png';
   static const chatIcon = 'assets/nav_bar/chat_icon.png';
   static const userIcon = 'assets/nav_bar/user_icon.png';
+  static const mapIcon = 'assets/main_screen/map_icon.png';
 }
