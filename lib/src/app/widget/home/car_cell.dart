@@ -1,49 +1,84 @@
-import 'package:carrentino_v2/src/static/grid_base.dart';
+import 'package:carrentino_v2/src/static/image_base.dart';
 import 'package:flutter/material.dart';
 
 class CarCell extends StatelessWidget {
-  const CarCell({super.key});
-  static const cellWidth = 160.0;
-  static const cellRadius = 15.0;
+  final int index;
+  const CarCell({super.key, required this.index});
 
   @override
   Widget build(BuildContext context) {
-    return InkWell(
+    return GestureDetector(
       onTap: () {
-        print('tap cell');
+        print(index);
       },
       child: Container(
-        height: 200,
-        width: cellWidth,
+        margin:
+            (index + 1) % 2 == 0
+                ? EdgeInsets.only(left: 8, right: 16, top: 16)
+                : EdgeInsets.only(left: 16, right: 8, top: 16),
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(12),
+          color: Colors.white,
+          boxShadow: [
+            BoxShadow(
+              color: Colors.grey.withOpacity(0.2),
+              spreadRadius: 2.5,
+              blurRadius: 2,
+              offset: const Offset(2, 1),
+            ),
+          ],
+        ),
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Container(
-              width: cellWidth,
-              height: 116,
+              margin: EdgeInsets.only(bottom: 8),
+              height: 135,
               decoration: BoxDecoration(
-                color: Colors.pinkAccent,
-                borderRadius: BorderRadius.circular(cellRadius),
+                color: Colors.blueGrey[100],
+
+                borderRadius: BorderRadius.circular(12),
               ),
             ),
+            // ),
             Padding(
-              padding: EdgeInsets.all(GridBase.x1),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
+              padding: const EdgeInsets.symmetric(horizontal: 8.0),
+              child: Text(
+                'Toyota RAV4 2006',
+                style: TextStyle(fontSize: 14, fontWeight: FontWeight.w400),
+              ),
+            ),
+            SizedBox(height: 2),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 8.0),
+              child: Text(
+                '2000 ₽ в сутки',
+                style: TextStyle(fontSize: 14, fontWeight: FontWeight.w800),
+              ),
+            ),
+            const SizedBox(height: 8),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 8),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Text('Toyota RAV4 2006',style: TextStyle(fontSize: 14,fontWeight: FontWeight.w400,height: 17,letterSpacing: 0),),
-                  SizedBox(height: 8),
-                  Text('2 000 ₽ в сутки',style: TextStyle(fontSize: 13,fontWeight: FontWeight.w800,height: 12,letterSpacing: -0.5)),
-                  SizedBox(height: 8),
                   Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Row(children: [
-                        Text('2,3'),
-                        SizedBox(width: GridBase.x0_5),
-                        Container(width: GridBase.x1_5,height:GridBase.x1_5,color: Colors.blue,)
-                      ]),
-                      Text('200 м от вас')
-      
+                      Text(
+                        '4,9',
+                        style: TextStyle(
+                          fontSize: 12,
+                          fontWeight: FontWeight.w400,
+                        ),
+                      ),
+                      const SizedBox(width: 6),
+                      Image.asset(
+                        ImageBase.carIcon,
+                        width: 17,
+                        height: 17,
+                        color: Colors.green,
+                      ),
                     ],
                   ),
                 ],

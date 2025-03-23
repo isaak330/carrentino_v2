@@ -16,6 +16,7 @@ class RootScreen extends StatelessWidget {
     return Scaffold(
       body: navigationShell,
       bottomNavigationBar: BottomNavigationBar(
+        backgroundColor: Colors.white,
         enableFeedback: false,
         type: BottomNavigationBarType.fixed,
         showUnselectedLabels: true,

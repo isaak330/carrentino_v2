@@ -1,4 +1,4 @@
-import 'package:carrentino_v2/src/app/screen/favorites_screen.dart';
+import 'package:carrentino_v2/src/app/screen/favorites_screen/favorites_screen.dart';
 import 'package:carrentino_v2/src/app/screen/home/home_screen.dart';
 import 'package:carrentino_v2/src/app/screen/root_screen.dart';
 import 'package:carrentino_v2/src/app/screen/user/user_screen.dart';

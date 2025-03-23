@@ -6,4 +6,8 @@ final class ImageBase {
   static const chatIcon = 'assets/nav_bar/chat_icon.png';
   static const userIcon = 'assets/nav_bar/user_icon.png';
   static const mapIcon = 'assets/main_screen/map_icon.png';
+  static const bellIcon = 'assets/main_screen/bell_icon.png';
+  static const sortIcon = 'assets/main_screen/sort_icon.png';
+  static const filterIcon = 'assets/main_screen/filter_icon.png';
+  static const searchIcon = 'assets/main_screen/search_icon.png';
 }

@@ -1,4 +1,5 @@
 import 'package:carrentino_v2/src/static/colors_base.dart';
+import 'package:carrentino_v2/src/static/image_base.dart';
 import 'package:flutter/material.dart';
 
 class HomeSearchBar extends StatefulWidget {
@@ -17,14 +18,14 @@ class _HomeSearchBarState extends State<HomeSearchBar> {
       height: 32,
       child: Row(
         children: [
-          Padding(padding: EdgeInsets.symmetric(horizontal: 4),child: Icon(Icons.search,size: 16,color: ColorsBase.blue,)),
+          Padding(padding: EdgeInsets.symmetric(horizontal: 8),child: Image.asset(ImageBase.searchIcon,color: ColorsBase.blue,scale: 2,)),
           Expanded(child: TextField(
             cursorHeight: 16,
             cursorColor: ColorsBase.blue,
             decoration: const InputDecoration(
               border: InputBorder.none,
               hintText: 'Поиск машины',
-              hintStyle: TextStyle(color: Colors.grey)
+              hintStyle: TextStyle(color: ColorsBase.blue)
             ),
           ))
 
