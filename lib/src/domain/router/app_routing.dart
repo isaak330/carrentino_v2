@@ -2,6 +2,7 @@ import 'package:carrentino_v2/src/app/screen/favorites_screen/favorites_screen.d
 import 'package:carrentino_v2/src/app/screen/home/home_screen.dart';
 import 'package:carrentino_v2/src/app/screen/root_screen.dart';
 import 'package:carrentino_v2/src/app/screen/user/user_screen.dart';
+import 'package:carrentino_v2/src/app/widget/car_card.dart';
 import 'package:go_router/go_router.dart';
 
 final router = GoRouter(
@@ -12,7 +13,11 @@ final router = GoRouter(
       branches: [
         StatefulShellBranch(
           routes: [
-            GoRoute(path: '/home', builder: (context, state) => HomeScreen(),),
+            GoRoute(path: '/home', builder: (context, state) => HomeScreen(),routes: [
+              GoRoute(path: '/car',builder: (context, state) => CarCard(),routes: [
+                // GoRoute(path: '/create_order',builder: (context, state) => )
+              ])
+            ]),
           ],
         ),
         StatefulShellBranch(
@@ -25,7 +30,7 @@ final router = GoRouter(
         ),
         StatefulShellBranch(
           routes: [
-            GoRoute(path: '/order', builder: (context, state) => UserScreen(),),
+            GoRoute(path: '/create_card', builder: (context, state) => UserScreen(),),
           ],
         ),
         StatefulShellBranch(

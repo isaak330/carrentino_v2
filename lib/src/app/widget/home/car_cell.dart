@@ -1,5 +1,6 @@
 import 'package:carrentino_v2/src/static/image_base.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 class CarCell extends StatelessWidget {
   final int index;
@@ -9,7 +10,7 @@ class CarCell extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        print(index);
+        context.go('/home/car');
       },
       child: Container(
         margin:
