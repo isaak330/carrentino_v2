@@ -1,3 +1,4 @@
+import 'package:carrentino_v2/src/static/image_base.dart';
 import 'package:flutter/material.dart';
 
 class AuthScreen extends StatefulWidget {
@@ -10,6 +11,13 @@ class AuthScreen extends StatefulWidget {
 class _AuthScreenState extends State<AuthScreen> {
   @override
   Widget build(BuildContext context) {
-    return Center(child: Container(height: 100,width: 100,color: Colors.red,));
+    return Scaffold(
+      body: Column(
+        children: [
+        SafeArea(child: Image.asset(ImageBase.app_icon))
+        ],
+      ),
+    );
+
   }
 }

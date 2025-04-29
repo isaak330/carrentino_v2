@@ -28,6 +28,7 @@ class FavoritesCarCell extends StatelessWidget {
                   color: Colors.blueGrey[100]),
               width: 150,
               height: 130,
+              child:  Image.asset(ImageBase.car_image,fit: BoxFit.fill,),
             ),
             // 'assets/home_screen/toyota.png'
             Expanded(
@@ -65,15 +66,16 @@ class FavoritesCarCell extends StatelessWidget {
                                   horizontal: 12, vertical: 3),
                               decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(20),
-                                  color: const Color.fromRGBO(153, 128, 255, 1)),
+                                  // color: const Color.fromRGBO(153, 128, 255, 1)
+                              ),
                               alignment: Alignment.center,
                               child: Text(
-                             'Забронировать',
+                             '',
                              style: TextStyle(fontWeight: FontWeight.w600,fontSize: 12,color: Colors.white),
                               ),
                             ),
                           ),
-                          Container(width: 20,height: 20,decoration: BoxDecoration(borderRadius: BorderRadius.circular(10),color: Colors.red),)
+                          Icon(Icons.favorite,color: Colors.red,)
                         ],
                       )
                     ],

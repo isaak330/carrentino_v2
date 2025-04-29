@@ -11,7 +11,10 @@ class HomeScreen extends StatelessWidget {
       backgroundColor: Colors.white,
       body: CustomScrollView(slivers: [
         HomeAppbar(),
-        SliverGrid.builder(gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2,childAspectRatio: 0.90), itemBuilder:(context, index) => CarCell(index: index,))
+        SliverGrid.count(crossAxisCount: 2,childAspectRatio: 0.9,children: [
+          CarCell(index: 1)
+        ],),
+
       ],),
     ); 
   }

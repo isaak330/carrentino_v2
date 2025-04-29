@@ -1,5 +1,6 @@
 import 'package:carrentino_v2/src/static/image_base.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 class CarCard extends StatelessWidget {
   const CarCard({super.key});
@@ -17,7 +18,9 @@ class CarCard extends StatelessWidget {
               width: double.infinity,
               decoration: BoxDecoration(
                   color: Colors.blueGrey[200],
-                  borderRadius: BorderRadius.circular(12)),
+                  borderRadius: BorderRadius.circular(12)
+              ),
+              child: Image.asset(ImageBase.car_image,fit: BoxFit.cover,),
             ),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 16),
@@ -94,7 +97,7 @@ class CarCard extends StatelessWidget {
                   SizedBox(height: 128),
                   GestureDetector(
                     onTap: () {
-                      print('123');
+                      context.go('/home/car/order');
                     },
                     child: Container(
                       height: 55,
