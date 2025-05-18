@@ -1,4 +1,5 @@
 import 'package:carrentino_v2/src/data/db/user/user_db.dart';
+import 'package:carrentino_v2/src/data/models/car_data_models/car_data_models.dart';
 import 'package:carrentino_v2/src/static/api_urls.dart';
 import 'package:dio/dio.dart';
 
@@ -11,7 +12,12 @@ class CarsRepository {
       // BaseOptions(headers: {'X-Auth-Token': token}),
     ).get(ApiUrls.carsListing);
     if (response.statusCode == 200) {
-      return response.data;
+      // print("++++1++++ ${response.data['data']}");
+      final data =
+          response.data['data'].map((e) => CarCellModel.fromJson(e)).toList();
+      print("++++2++++ $data");
+      // print("++++2++++ $data");
+      return data;
     } else {
       return null;
     }

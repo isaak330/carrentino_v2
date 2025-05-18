@@ -1,6 +1,5 @@
 import 'dart:io';
 
-import 'package:carrentino_v2/src/domain/bloc/new_car_bloc/new_car_bloc.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -12,10 +11,7 @@ class NewCarScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => NewCarBloc(),
-      child: Scaffold(body: initialPage(context)),
-    );
+    return Scaffold(body: initialPage(context));
   }
 }
 

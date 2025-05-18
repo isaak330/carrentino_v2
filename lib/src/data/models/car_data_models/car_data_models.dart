@@ -138,3 +138,23 @@ abstract class BrandModel with _$BrandModel {
   factory BrandModel.fromJson(Map<String, dynamic> json) =>
       _$BrandModelFromJson(json);
 }
+
+@freezed
+abstract class CarCellModel with _$CarCellModel {
+  const factory CarCellModel({
+    String? id,
+    int? price,
+    @JsonKey(name: 'car_model', fromJson: _titleFromJson) String? title,
+    String? score,
+  }) = _CarCellModel;
+
+  factory CarCellModel.fromJson(Map<String, dynamic> json) =>
+      _$CarCellModelFromJson(json);
+}
+
+String _titleFromJson(Map<String, dynamic> json) {
+  print(json['brand']['title']);
+  print(json['title']);
+  print("+++AAAAA+++ $json");
+  return json['brand']['title'] + " " + json['title'];
+}

@@ -11,7 +11,8 @@ class HomeScreen extends StatelessWidget {
     return Scaffold(
       floatingActionButton: FloatingActionButton(
         onPressed: () async {
-          await CarsRepository().getCar("94d82dd3-ec9b-42c0-8674-57c4acf2a0e0");
+          // await CarsRepository().getCar("94d82dd3-ec9b-42c0-8674-57c4acf2a0e0");
+          await CarsRepository().getCars();
         },
         child: Icon(Icons.add),
       ),

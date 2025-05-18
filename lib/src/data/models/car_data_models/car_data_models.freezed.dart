@@ -537,4 +537,146 @@ as String?,
 
 }
 
+
+/// @nodoc
+mixin _$CarCellModel {
+
+ String? get id; int? get price;@JsonKey(name: 'car_model', fromJson: _titleFromJson) String? get title; String? get score;
+/// Create a copy of CarCellModel
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$CarCellModelCopyWith<CarCellModel> get copyWith => _$CarCellModelCopyWithImpl<CarCellModel>(this as CarCellModel, _$identity);
+
+  /// Serializes this CarCellModel to a JSON map.
+  Map<String, dynamic> toJson();
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is CarCellModel&&(identical(other.id, id) || other.id == id)&&(identical(other.price, price) || other.price == price)&&(identical(other.title, title) || other.title == title)&&(identical(other.score, score) || other.score == score));
+}
+
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode => Object.hash(runtimeType,id,price,title,score);
+
+@override
+String toString() {
+  return 'CarCellModel(id: $id, price: $price, title: $title, score: $score)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class $CarCellModelCopyWith<$Res>  {
+  factory $CarCellModelCopyWith(CarCellModel value, $Res Function(CarCellModel) _then) = _$CarCellModelCopyWithImpl;
+@useResult
+$Res call({
+ String? id, int? price,@JsonKey(name: 'car_model', fromJson: _titleFromJson) String? title, String? score
+});
+
+
+
+
+}
+/// @nodoc
+class _$CarCellModelCopyWithImpl<$Res>
+    implements $CarCellModelCopyWith<$Res> {
+  _$CarCellModelCopyWithImpl(this._self, this._then);
+
+  final CarCellModel _self;
+  final $Res Function(CarCellModel) _then;
+
+/// Create a copy of CarCellModel
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') @override $Res call({Object? id = freezed,Object? price = freezed,Object? title = freezed,Object? score = freezed,}) {
+  return _then(_self.copyWith(
+id: freezed == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
+as String?,price: freezed == price ? _self.price : price // ignore: cast_nullable_to_non_nullable
+as int?,title: freezed == title ? _self.title : title // ignore: cast_nullable_to_non_nullable
+as String?,score: freezed == score ? _self.score : score // ignore: cast_nullable_to_non_nullable
+as String?,
+  ));
+}
+
+}
+
+
+/// @nodoc
+@JsonSerializable()
+
+class _CarCellModel implements CarCellModel {
+  const _CarCellModel({this.id, this.price, @JsonKey(name: 'car_model', fromJson: _titleFromJson) this.title, this.score});
+  factory _CarCellModel.fromJson(Map<String, dynamic> json) => _$CarCellModelFromJson(json);
+
+@override final  String? id;
+@override final  int? price;
+@override@JsonKey(name: 'car_model', fromJson: _titleFromJson) final  String? title;
+@override final  String? score;
+
+/// Create a copy of CarCellModel
+/// with the given fields replaced by the non-null parameter values.
+@override @JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+_$CarCellModelCopyWith<_CarCellModel> get copyWith => __$CarCellModelCopyWithImpl<_CarCellModel>(this, _$identity);
+
+@override
+Map<String, dynamic> toJson() {
+  return _$CarCellModelToJson(this, );
+}
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _CarCellModel&&(identical(other.id, id) || other.id == id)&&(identical(other.price, price) || other.price == price)&&(identical(other.title, title) || other.title == title)&&(identical(other.score, score) || other.score == score));
+}
+
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode => Object.hash(runtimeType,id,price,title,score);
+
+@override
+String toString() {
+  return 'CarCellModel(id: $id, price: $price, title: $title, score: $score)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class _$CarCellModelCopyWith<$Res> implements $CarCellModelCopyWith<$Res> {
+  factory _$CarCellModelCopyWith(_CarCellModel value, $Res Function(_CarCellModel) _then) = __$CarCellModelCopyWithImpl;
+@override @useResult
+$Res call({
+ String? id, int? price,@JsonKey(name: 'car_model', fromJson: _titleFromJson) String? title, String? score
+});
+
+
+
+
+}
+/// @nodoc
+class __$CarCellModelCopyWithImpl<$Res>
+    implements _$CarCellModelCopyWith<$Res> {
+  __$CarCellModelCopyWithImpl(this._self, this._then);
+
+  final _CarCellModel _self;
+  final $Res Function(_CarCellModel) _then;
+
+/// Create a copy of CarCellModel
+/// with the given fields replaced by the non-null parameter values.
+@override @pragma('vm:prefer-inline') $Res call({Object? id = freezed,Object? price = freezed,Object? title = freezed,Object? score = freezed,}) {
+  return _then(_CarCellModel(
+id: freezed == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
+as String?,price: freezed == price ? _self.price : price // ignore: cast_nullable_to_non_nullable
+as int?,title: freezed == title ? _self.title : title // ignore: cast_nullable_to_non_nullable
+as String?,score: freezed == score ? _self.score : score // ignore: cast_nullable_to_non_nullable
+as String?,
+  ));
+}
+
+
+}
+
 // dart format on

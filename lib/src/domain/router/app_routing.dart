@@ -17,7 +17,7 @@ import 'package:image_picker/image_picker.dart';
 
 import '../../app/screen/new_car/new_car_photo.dart';
 
-final authorized = false;
+final authorized = true;
 final router = GoRouter(
   initialLocation: authorized ? '/home' : '/auth',
   routes: [

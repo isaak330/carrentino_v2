@@ -129,3 +129,19 @@ Map<String, dynamic> _$BrandModelToJson(_BrandModel instance) =>
       'created_at': instance.createdAt,
       'updated_at': instance.updatedAt,
     };
+
+_CarCellModel _$CarCellModelFromJson(Map<String, dynamic> json) =>
+    _CarCellModel(
+      id: json['id'] as String?,
+      price: (json['price'] as num?)?.toInt(),
+      title: _titleFromJson(json['car_model'] as Map<String, dynamic>),
+      score: json['score'] as String?,
+    );
+
+Map<String, dynamic> _$CarCellModelToJson(_CarCellModel instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'price': instance.price,
+      'car_model': instance.title,
+      'score': instance.score,
+    };
