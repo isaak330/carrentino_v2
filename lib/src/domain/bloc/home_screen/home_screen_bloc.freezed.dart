@@ -45,8 +45,8 @@ $HomeScreenEventCopyWith(HomeScreenEvent _, $Res Function(HomeScreenEvent) __);
 /// @nodoc
 
 
-class _Started implements HomeScreenEvent {
-  const _Started();
+class _GetCarList implements HomeScreenEvent {
+  const _GetCarList();
   
 
 
@@ -56,7 +56,7 @@ class _Started implements HomeScreenEvent {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _Started);
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _GetCarList);
 }
 
 
@@ -65,7 +65,7 @@ int get hashCode => runtimeType.hashCode;
 
 @override
 String toString() {
-  return 'HomeScreenEvent.started()';
+  return 'HomeScreenEvent.getCarList()';
 }
 
 
@@ -73,6 +73,72 @@ String toString() {
 
 
 
+
+/// @nodoc
+
+
+class _AddToFavorites implements HomeScreenEvent {
+  const _AddToFavorites(this.id);
+  
+
+ final  String id;
+
+/// Create a copy of HomeScreenEvent
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+_$AddToFavoritesCopyWith<_AddToFavorites> get copyWith => __$AddToFavoritesCopyWithImpl<_AddToFavorites>(this, _$identity);
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _AddToFavorites&&(identical(other.id, id) || other.id == id));
+}
+
+
+@override
+int get hashCode => Object.hash(runtimeType,id);
+
+@override
+String toString() {
+  return 'HomeScreenEvent.addToFavorites(id: $id)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class _$AddToFavoritesCopyWith<$Res> implements $HomeScreenEventCopyWith<$Res> {
+  factory _$AddToFavoritesCopyWith(_AddToFavorites value, $Res Function(_AddToFavorites) _then) = __$AddToFavoritesCopyWithImpl;
+@useResult
+$Res call({
+ String id
+});
+
+
+
+
+}
+/// @nodoc
+class __$AddToFavoritesCopyWithImpl<$Res>
+    implements _$AddToFavoritesCopyWith<$Res> {
+  __$AddToFavoritesCopyWithImpl(this._self, this._then);
+
+  final _AddToFavorites _self;
+  final $Res Function(_AddToFavorites) _then;
+
+/// Create a copy of HomeScreenEvent
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') $Res call({Object? id = null,}) {
+  return _then(_AddToFavorites(
+null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
+as String,
+  ));
+}
+
+
+}
 
 /// @nodoc
 mixin _$HomeScreenState {

@@ -11,5 +11,5 @@ final class ImageBase {
   static const searchIcon = 'assets/main_screen/search_icon.png';
   static const app_icon = 'assets/main_screen/app_icon.png';
   static const car_image = 'assets/main_screen/car_image.png';
+  static const car_placeholder = 'assets/main_screen/car_placeholder.png';
 }
-

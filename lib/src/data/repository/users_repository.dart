@@ -1,13 +1,11 @@
+import 'package:carrentino_v2/src/data/models/user_model/user_models.dart';
 import 'package:carrentino_v2/src/static/api_urls.dart';
 import 'package:dio/dio.dart';
 
 class UsersRepository {
   /// Sign in
   static Future<Map?> signIn(String email, String password) async {
-    final response = await Dio().post(
-      ApiUrls.signIn,
-      data: {'email': email, 'password': password},
-    );
+    final response = await Dio().post(ApiUrls.signIn, data: {'email': email, 'password': password});
     if (response.statusCode == 200) {
       return {
         'userId': response.data['user_id'],
@@ -30,22 +28,10 @@ class UsersRepository {
   }
 
   /// Verify email
-  static Future<bool> verifyEmail(
-    String code,
-    String firstName,
-    String lastName,
-    String email,
-    String password,
-  ) async {
+  static Future<bool> verifyEmail(String code, String firstName, String lastName, String email, String password) async {
     final response = await Dio().post(
       ApiUrls.verify,
-      data: {
-        "code": code,
-        "first_name": firstName,
-        "last_name": lastName,
-        "email": email,
-        "password": password,
-      },
+      data: {"code": code, "first_name": firstName, "last_name": lastName, "email": email, "password": password},
     );
     if (response.statusCode == 200) {
       return true;
@@ -55,7 +41,12 @@ class UsersRepository {
   }
 
   /// Get user
-  static Future<void> getUser() async {
-    final response = await Dio().get(ApiUrls.usersService);
+  static Future<UserModel?> getUser(String userId) async {
+    final response = await Dio().get("${ApiUrls.usersService}/?user__id=$userId");
+    if (response.statusCode == 200) {
+      return UserModel.fromJson(response.data[0]);
+    } else {
+      return null;
+    }
   }
 }

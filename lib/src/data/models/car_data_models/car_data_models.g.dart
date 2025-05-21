@@ -8,37 +8,35 @@ part of 'car_data_models.dart';
 
 _CarData _$CarDataFromJson(Map<String, dynamic> json) => _CarData(
   id: json['id'] as String?,
+  image: _imageFromJson(json['attachments'] as List),
   color: json['color'] as String?,
   score: json['score'] as String?,
   price: (json['price'] as num?)?.toInt(),
   ownerId: json['owner_id'] as String?,
-  lattitude: json['lattitude'] as String?,
+  latitude: json['latitude'] as String?,
   longitude: json['longitude'] as String?,
-  dateFrom: json['dateFrom'] as String?,
-  dateTo: json['dateTo'] as String?,
+  dateFrom: json['date_from'] as String?,
+  dateTo: json['date_to'] as String?,
   status: $enumDecodeNullable(_$CarStatusEnumMap, json['status']),
-  createdAt: json['created_at'] as String?,
-  updatedAt: json['updated_at'] as String?,
   carModel:
-      json['carModel'] == null
+      json['car_model'] == null
           ? null
-          : CarModel.fromJson(json['carModel'] as Map<String, dynamic>),
+          : CarModel.fromJson(json['car_model'] as Map<String, dynamic>),
 );
 
 Map<String, dynamic> _$CarDataToJson(_CarData instance) => <String, dynamic>{
   'id': instance.id,
+  'attachments': instance.image,
   'color': instance.color,
   'score': instance.score,
   'price': instance.price,
   'owner_id': instance.ownerId,
-  'lattitude': instance.lattitude,
+  'latitude': instance.latitude,
   'longitude': instance.longitude,
-  'dateFrom': instance.dateFrom,
-  'dateTo': instance.dateTo,
+  'date_from': instance.dateFrom,
+  'date_to': instance.dateTo,
   'status': _$CarStatusEnumMap[instance.status],
-  'created_at': instance.createdAt,
-  'updated_at': instance.updatedAt,
-  'carModel': instance.carModel,
+  'car_model': instance.carModel,
 };
 
 const _$CarStatusEnumMap = {
@@ -58,8 +56,6 @@ _CarModel _$CarModelFromJson(Map<String, dynamic> json) => _CarModel(
   gearbox: $enumDecodeNullable(_$GearboxEnumMap, json['gearbox']),
   fuel: $enumDecodeNullable(_$FuelTypeEnumMap, json['fuel']),
   hp: (json['hp'] as num?)?.toInt(),
-  createdAt: json['created_at'] as String?,
-  updatedAt: json['updated_at'] as String?,
   brand:
       json['brand'] == null
           ? null
@@ -76,8 +72,6 @@ Map<String, dynamic> _$CarModelToJson(_CarModel instance) => <String, dynamic>{
   'gearbox': _$GearboxEnumMap[instance.gearbox],
   'fuel': _$FuelTypeEnumMap[instance.fuel],
   'hp': instance.hp,
-  'created_at': instance.createdAt,
-  'updated_at': instance.updatedAt,
   'brand': instance.brand,
 };
 
@@ -115,23 +109,16 @@ const _$FuelTypeEnumMap = {
   FuelType.electric: 'Электро',
 };
 
-_BrandModel _$BrandModelFromJson(Map<String, dynamic> json) => _BrandModel(
-  id: json['id'] as String?,
-  title: json['title'] as String?,
-  createdAt: json['created_at'] as String?,
-  updatedAt: json['updated_at'] as String?,
-);
+_BrandModel _$BrandModelFromJson(Map<String, dynamic> json) =>
+    _BrandModel(id: json['id'] as String?, title: json['title'] as String?);
 
 Map<String, dynamic> _$BrandModelToJson(_BrandModel instance) =>
-    <String, dynamic>{
-      'id': instance.id,
-      'title': instance.title,
-      'created_at': instance.createdAt,
-      'updated_at': instance.updatedAt,
-    };
+    <String, dynamic>{'id': instance.id, 'title': instance.title};
 
 _CarCellModel _$CarCellModelFromJson(Map<String, dynamic> json) =>
     _CarCellModel(
+      image: _imageFromJson(json['attachments'] as List),
+      ownerId: json['owner_id'] as String?,
       id: json['id'] as String?,
       price: (json['price'] as num?)?.toInt(),
       title: _titleFromJson(json['car_model'] as Map<String, dynamic>),
@@ -140,6 +127,8 @@ _CarCellModel _$CarCellModelFromJson(Map<String, dynamic> json) =>
 
 Map<String, dynamic> _$CarCellModelToJson(_CarCellModel instance) =>
     <String, dynamic>{
+      'attachments': instance.image,
+      'owner_id': instance.ownerId,
       'id': instance.id,
       'price': instance.price,
       'car_model': instance.title,

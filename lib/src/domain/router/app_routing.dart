@@ -8,18 +8,35 @@ import 'package:carrentino_v2/src/app/screen/new_car/new_car_description.dart';
 import 'package:carrentino_v2/src/app/screen/new_car/new_car_screen.dart';
 import 'package:carrentino_v2/src/app/screen/new_car/new_car_time.dart';
 import 'package:carrentino_v2/src/app/screen/new_car/new_car_vin.dart';
+import 'package:carrentino_v2/src/app/screen/order/order_screen.dart';
 import 'package:carrentino_v2/src/app/screen/root_screen.dart';
 import 'package:carrentino_v2/src/app/screen/user/user_screen.dart';
 import 'package:carrentino_v2/src/app/widget/car_card.dart';
+import 'package:carrentino_v2/src/data/db/user/user_db.dart';
+import 'package:carrentino_v2/src/domain/bloc/bloc/new_car_bloc.dart';
 import 'package:carrentino_v2/src/domain/bloc/sign_up_bloc/sign_up_bloc.dart';
+import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:image_picker/image_picker.dart';
 
 import '../../app/screen/new_car/new_car_photo.dart';
 
-final authorized = true;
 final router = GoRouter(
-  initialLocation: authorized ? '/home' : '/auth',
+  initialLocation: '/auth',
+  redirect: (BuildContext context, GoRouterState state) async {
+    final isLoggedIn = await UserDb.getUserId() != '';
+    final isAuthRoute = state.matchedLocation == '/auth' || state.matchedLocation == '/signup';
+
+    if (!isLoggedIn && !isAuthRoute) {
+      return '/auth';
+    }
+
+    if (isLoggedIn && isAuthRoute) {
+      return '/home';
+    }
+
+    return null;
+  },
   routes: [
     GoRoute(path: '/auth', builder: (context, state) => AuthScreen()),
     GoRoute(
@@ -47,9 +64,7 @@ final router = GoRouter(
       ],
     ),
     StatefulShellRoute.indexedStack(
-      builder:
-          (context, state, navigationShell) =>
-              RootScreen(navigationShell: navigationShell),
+      builder: (context, state, navigationShell) => RootScreen(navigationShell: navigationShell),
       branches: [
         StatefulShellBranch(
           routes: [
@@ -59,23 +74,19 @@ final router = GoRouter(
               routes: [
                 GoRoute(
                   path: '/car',
-                  builder: (context, state) => CarCard(),
-                  routes: [
-                    // GoRoute(path: '/order',builder: (context, state) =>OrderScreen() )
-                  ],
+                  builder: (context, state) {
+                    final list = state.extra as Map<String, dynamic>;
+                    final carId = list['carId'] as String;
+                    final ownerId = list['ownerId'] as String;
+                    return CarCard(carId: carId, ownerId: ownerId);
+                  },
+                  routes: [GoRoute(path: '/order', builder: (context, state) => OrderScreen())],
                 ),
               ],
             ),
           ],
         ),
-        StatefulShellBranch(
-          routes: [
-            GoRoute(
-              path: '/favorites',
-              builder: (context, state) => FavoritesScreen(),
-            ),
-          ],
-        ),
+        StatefulShellBranch(routes: [GoRoute(path: '/favorites', builder: (context, state) => FavoritesScreen())]),
         StatefulShellBranch(
           routes: [
             GoRoute(
@@ -85,21 +96,36 @@ final router = GoRouter(
                 GoRoute(
                   path: "/photo",
                   builder: (context, state) {
-                    final XFile photo = state.extra as XFile;
-                    return NewCarPhoto(photo: photo);
+                    final extra = state.extra as Map<String, dynamic>;
+                    final bloc = extra['bloc'] as NewCarBloc;
+                    final XFile photo = extra['photo'] as XFile;
+
+                    return NewCarPhoto(photo: photo, bloc: bloc);
                   },
                   routes: [
                     GoRoute(
                       path: '/vin',
-                      builder: (context, state) => NewCarVin(),
+                      builder: (context, state) {
+                        final extra = state.extra as Map<String, dynamic>;
+                        final bloc = extra['bloc'] as NewCarBloc;
+                        return NewCarVin(bloc: bloc);
+                      },
                       routes: [
                         GoRoute(
                           path: '/description',
-                          builder: (context, state) => NewCarDescription(),
+                          builder: (context, state) {
+                            final extra = state.extra as Map<String, dynamic>;
+                            final bloc = extra['bloc'] as NewCarBloc;
+                            return NewCarDescription(bloc: bloc);
+                          },
                           routes: [
                             GoRoute(
                               path: '/time',
-                              builder: (context, state) => NewCarTime(),
+                              builder: (context, state) {
+                                final extra = state.extra as Map<String, dynamic>;
+                                final bloc = extra['bloc'] as NewCarBloc;
+                                return NewCarTime(bloc: bloc);
+                              },
                             ),
                           ],
                         ),
@@ -111,24 +137,13 @@ final router = GoRouter(
             ),
           ],
         ),
-        StatefulShellBranch(
-          routes: [
-            GoRoute(path: '/chat', builder: (context, state) => UserScreen()),
-          ],
-        ),
+        StatefulShellBranch(routes: [GoRoute(path: '/chat', builder: (context, state) => UserScreen())]),
         StatefulShellBranch(
           routes: [
             GoRoute(
               path: '/user',
               builder: (context, state) => UserScreen(),
-              routes: [
-                GoRoute(
-                  path: '/cars',
-                  builder: (context, state) => ManageCarsScreen(),
-                  routes: [
-
-              ]),
-              ],
+              routes: [GoRoute(path: '/cars', builder: (context, state) => ManageCarsScreen(), routes: [])],
             ),
           ],
         ),

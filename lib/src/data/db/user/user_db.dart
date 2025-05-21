@@ -14,7 +14,8 @@ class UserDb {
     await _prefs.setString('userId', userId);
   }
 
-  Future<String> getUserId() async {
+  static Future<String> getUserId() async {
+    final _prefs = await SharedPreferences.getInstance();
     return _prefs.getString('userId') ?? '';
   }
 
@@ -22,11 +23,13 @@ class UserDb {
     await _prefs.remove('userId');
   }
 
-  Future<void> setAccessToken(String accessToken) async {
+  static Future<void> setAccessToken(String accessToken) async {
+    final _prefs = await SharedPreferences.getInstance();
     await _prefs.setString('accessToken', accessToken);
   }
 
-  Future<String> getAccessToken() async {
+  static Future<String> getAccessToken() async {
+    final _prefs = await SharedPreferences.getInstance();
     return _prefs.getString('accessToken') ?? '';
   }
 
@@ -34,7 +37,8 @@ class UserDb {
     await _prefs.remove('accessToken');
   }
 
-  Future<void> setRefreshToken(String refreshToken) async {
+  static Future<void> setRefreshToken(String refreshToken) async {
+    final _prefs = await SharedPreferences.getInstance();
     await _prefs.setString('refreshToken', refreshToken);
   }
 

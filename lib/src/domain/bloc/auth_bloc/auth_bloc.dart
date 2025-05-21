@@ -19,8 +19,8 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
       emit(state.copyWith(isLoading: false, isLoggedIn: true));
       final userDb = await UserDb.getInstance();
       await userDb.setUserId(response['userId']);
-      await userDb.setAccessToken(response['accessToken']);
-      await userDb.setRefreshToken(response['refreshToken']);
+      await UserDb.setAccessToken(response['accessToken']);
+      await UserDb.setRefreshToken(response['refreshToken']);
     } else {
       emit(state.copyWith(isLoading: false, isLoggedIn: false));
     }

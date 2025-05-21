@@ -16,7 +16,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$CarData {
 
- String? get id; String? get color; String? get score; int? get price;@JsonKey(name: 'owner_id') String? get ownerId; String? get lattitude; String? get longitude; String? get dateFrom; String? get dateTo; CarStatus? get status;@JsonKey(name: 'created_at') String? get createdAt;@JsonKey(name: 'updated_at') String? get updatedAt; CarModel? get carModel;
+ String? get id;@JsonKey(name: 'attachments', fromJson: _imageFromJson) String? get image; String? get color; String? get score; int? get price;@JsonKey(name: 'owner_id') String? get ownerId; String? get latitude; String? get longitude;@JsonKey(name: 'date_from') String? get dateFrom;@JsonKey(name: 'date_to') String? get dateTo; CarStatus? get status;@JsonKey(name: 'car_model') CarModel? get carModel;
 /// Create a copy of CarData
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -29,16 +29,16 @@ $CarDataCopyWith<CarData> get copyWith => _$CarDataCopyWithImpl<CarData>(this as
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is CarData&&(identical(other.id, id) || other.id == id)&&(identical(other.color, color) || other.color == color)&&(identical(other.score, score) || other.score == score)&&(identical(other.price, price) || other.price == price)&&(identical(other.ownerId, ownerId) || other.ownerId == ownerId)&&(identical(other.lattitude, lattitude) || other.lattitude == lattitude)&&(identical(other.longitude, longitude) || other.longitude == longitude)&&(identical(other.dateFrom, dateFrom) || other.dateFrom == dateFrom)&&(identical(other.dateTo, dateTo) || other.dateTo == dateTo)&&(identical(other.status, status) || other.status == status)&&(identical(other.createdAt, createdAt) || other.createdAt == createdAt)&&(identical(other.updatedAt, updatedAt) || other.updatedAt == updatedAt)&&(identical(other.carModel, carModel) || other.carModel == carModel));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is CarData&&(identical(other.id, id) || other.id == id)&&(identical(other.image, image) || other.image == image)&&(identical(other.color, color) || other.color == color)&&(identical(other.score, score) || other.score == score)&&(identical(other.price, price) || other.price == price)&&(identical(other.ownerId, ownerId) || other.ownerId == ownerId)&&(identical(other.latitude, latitude) || other.latitude == latitude)&&(identical(other.longitude, longitude) || other.longitude == longitude)&&(identical(other.dateFrom, dateFrom) || other.dateFrom == dateFrom)&&(identical(other.dateTo, dateTo) || other.dateTo == dateTo)&&(identical(other.status, status) || other.status == status)&&(identical(other.carModel, carModel) || other.carModel == carModel));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,id,color,score,price,ownerId,lattitude,longitude,dateFrom,dateTo,status,createdAt,updatedAt,carModel);
+int get hashCode => Object.hash(runtimeType,id,image,color,score,price,ownerId,latitude,longitude,dateFrom,dateTo,status,carModel);
 
 @override
 String toString() {
-  return 'CarData(id: $id, color: $color, score: $score, price: $price, ownerId: $ownerId, lattitude: $lattitude, longitude: $longitude, dateFrom: $dateFrom, dateTo: $dateTo, status: $status, createdAt: $createdAt, updatedAt: $updatedAt, carModel: $carModel)';
+  return 'CarData(id: $id, image: $image, color: $color, score: $score, price: $price, ownerId: $ownerId, latitude: $latitude, longitude: $longitude, dateFrom: $dateFrom, dateTo: $dateTo, status: $status, carModel: $carModel)';
 }
 
 
@@ -49,7 +49,7 @@ abstract mixin class $CarDataCopyWith<$Res>  {
   factory $CarDataCopyWith(CarData value, $Res Function(CarData) _then) = _$CarDataCopyWithImpl;
 @useResult
 $Res call({
- String? id, String? color, String? score, int? price,@JsonKey(name: 'owner_id') String? ownerId, String? lattitude, String? longitude, String? dateFrom, String? dateTo, CarStatus? status,@JsonKey(name: 'created_at') String? createdAt,@JsonKey(name: 'updated_at') String? updatedAt, CarModel? carModel
+ String? id,@JsonKey(name: 'attachments', fromJson: _imageFromJson) String? image, String? color, String? score, int? price,@JsonKey(name: 'owner_id') String? ownerId, String? latitude, String? longitude,@JsonKey(name: 'date_from') String? dateFrom,@JsonKey(name: 'date_to') String? dateTo, CarStatus? status,@JsonKey(name: 'car_model') CarModel? carModel
 });
 
 
@@ -66,21 +66,20 @@ class _$CarDataCopyWithImpl<$Res>
 
 /// Create a copy of CarData
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? id = freezed,Object? color = freezed,Object? score = freezed,Object? price = freezed,Object? ownerId = freezed,Object? lattitude = freezed,Object? longitude = freezed,Object? dateFrom = freezed,Object? dateTo = freezed,Object? status = freezed,Object? createdAt = freezed,Object? updatedAt = freezed,Object? carModel = freezed,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? id = freezed,Object? image = freezed,Object? color = freezed,Object? score = freezed,Object? price = freezed,Object? ownerId = freezed,Object? latitude = freezed,Object? longitude = freezed,Object? dateFrom = freezed,Object? dateTo = freezed,Object? status = freezed,Object? carModel = freezed,}) {
   return _then(_self.copyWith(
 id: freezed == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
+as String?,image: freezed == image ? _self.image : image // ignore: cast_nullable_to_non_nullable
 as String?,color: freezed == color ? _self.color : color // ignore: cast_nullable_to_non_nullable
 as String?,score: freezed == score ? _self.score : score // ignore: cast_nullable_to_non_nullable
 as String?,price: freezed == price ? _self.price : price // ignore: cast_nullable_to_non_nullable
 as int?,ownerId: freezed == ownerId ? _self.ownerId : ownerId // ignore: cast_nullable_to_non_nullable
-as String?,lattitude: freezed == lattitude ? _self.lattitude : lattitude // ignore: cast_nullable_to_non_nullable
+as String?,latitude: freezed == latitude ? _self.latitude : latitude // ignore: cast_nullable_to_non_nullable
 as String?,longitude: freezed == longitude ? _self.longitude : longitude // ignore: cast_nullable_to_non_nullable
 as String?,dateFrom: freezed == dateFrom ? _self.dateFrom : dateFrom // ignore: cast_nullable_to_non_nullable
 as String?,dateTo: freezed == dateTo ? _self.dateTo : dateTo // ignore: cast_nullable_to_non_nullable
 as String?,status: freezed == status ? _self.status : status // ignore: cast_nullable_to_non_nullable
-as CarStatus?,createdAt: freezed == createdAt ? _self.createdAt : createdAt // ignore: cast_nullable_to_non_nullable
-as String?,updatedAt: freezed == updatedAt ? _self.updatedAt : updatedAt // ignore: cast_nullable_to_non_nullable
-as String?,carModel: freezed == carModel ? _self.carModel : carModel // ignore: cast_nullable_to_non_nullable
+as CarStatus?,carModel: freezed == carModel ? _self.carModel : carModel // ignore: cast_nullable_to_non_nullable
 as CarModel?,
   ));
 }
@@ -104,22 +103,21 @@ $CarModelCopyWith<$Res>? get carModel {
 @JsonSerializable()
 
 class _CarData implements CarData {
-  const _CarData({this.id, this.color, this.score, this.price, @JsonKey(name: 'owner_id') this.ownerId, this.lattitude, this.longitude, this.dateFrom, this.dateTo, this.status, @JsonKey(name: 'created_at') this.createdAt, @JsonKey(name: 'updated_at') this.updatedAt, this.carModel});
+  const _CarData({this.id, @JsonKey(name: 'attachments', fromJson: _imageFromJson) this.image, this.color, this.score, this.price, @JsonKey(name: 'owner_id') this.ownerId, this.latitude, this.longitude, @JsonKey(name: 'date_from') this.dateFrom, @JsonKey(name: 'date_to') this.dateTo, this.status, @JsonKey(name: 'car_model') this.carModel});
   factory _CarData.fromJson(Map<String, dynamic> json) => _$CarDataFromJson(json);
 
 @override final  String? id;
+@override@JsonKey(name: 'attachments', fromJson: _imageFromJson) final  String? image;
 @override final  String? color;
 @override final  String? score;
 @override final  int? price;
 @override@JsonKey(name: 'owner_id') final  String? ownerId;
-@override final  String? lattitude;
+@override final  String? latitude;
 @override final  String? longitude;
-@override final  String? dateFrom;
-@override final  String? dateTo;
+@override@JsonKey(name: 'date_from') final  String? dateFrom;
+@override@JsonKey(name: 'date_to') final  String? dateTo;
 @override final  CarStatus? status;
-@override@JsonKey(name: 'created_at') final  String? createdAt;
-@override@JsonKey(name: 'updated_at') final  String? updatedAt;
-@override final  CarModel? carModel;
+@override@JsonKey(name: 'car_model') final  CarModel? carModel;
 
 /// Create a copy of CarData
 /// with the given fields replaced by the non-null parameter values.
@@ -134,16 +132,16 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _CarData&&(identical(other.id, id) || other.id == id)&&(identical(other.color, color) || other.color == color)&&(identical(other.score, score) || other.score == score)&&(identical(other.price, price) || other.price == price)&&(identical(other.ownerId, ownerId) || other.ownerId == ownerId)&&(identical(other.lattitude, lattitude) || other.lattitude == lattitude)&&(identical(other.longitude, longitude) || other.longitude == longitude)&&(identical(other.dateFrom, dateFrom) || other.dateFrom == dateFrom)&&(identical(other.dateTo, dateTo) || other.dateTo == dateTo)&&(identical(other.status, status) || other.status == status)&&(identical(other.createdAt, createdAt) || other.createdAt == createdAt)&&(identical(other.updatedAt, updatedAt) || other.updatedAt == updatedAt)&&(identical(other.carModel, carModel) || other.carModel == carModel));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _CarData&&(identical(other.id, id) || other.id == id)&&(identical(other.image, image) || other.image == image)&&(identical(other.color, color) || other.color == color)&&(identical(other.score, score) || other.score == score)&&(identical(other.price, price) || other.price == price)&&(identical(other.ownerId, ownerId) || other.ownerId == ownerId)&&(identical(other.latitude, latitude) || other.latitude == latitude)&&(identical(other.longitude, longitude) || other.longitude == longitude)&&(identical(other.dateFrom, dateFrom) || other.dateFrom == dateFrom)&&(identical(other.dateTo, dateTo) || other.dateTo == dateTo)&&(identical(other.status, status) || other.status == status)&&(identical(other.carModel, carModel) || other.carModel == carModel));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,id,color,score,price,ownerId,lattitude,longitude,dateFrom,dateTo,status,createdAt,updatedAt,carModel);
+int get hashCode => Object.hash(runtimeType,id,image,color,score,price,ownerId,latitude,longitude,dateFrom,dateTo,status,carModel);
 
 @override
 String toString() {
-  return 'CarData(id: $id, color: $color, score: $score, price: $price, ownerId: $ownerId, lattitude: $lattitude, longitude: $longitude, dateFrom: $dateFrom, dateTo: $dateTo, status: $status, createdAt: $createdAt, updatedAt: $updatedAt, carModel: $carModel)';
+  return 'CarData(id: $id, image: $image, color: $color, score: $score, price: $price, ownerId: $ownerId, latitude: $latitude, longitude: $longitude, dateFrom: $dateFrom, dateTo: $dateTo, status: $status, carModel: $carModel)';
 }
 
 
@@ -154,7 +152,7 @@ abstract mixin class _$CarDataCopyWith<$Res> implements $CarDataCopyWith<$Res> {
   factory _$CarDataCopyWith(_CarData value, $Res Function(_CarData) _then) = __$CarDataCopyWithImpl;
 @override @useResult
 $Res call({
- String? id, String? color, String? score, int? price,@JsonKey(name: 'owner_id') String? ownerId, String? lattitude, String? longitude, String? dateFrom, String? dateTo, CarStatus? status,@JsonKey(name: 'created_at') String? createdAt,@JsonKey(name: 'updated_at') String? updatedAt, CarModel? carModel
+ String? id,@JsonKey(name: 'attachments', fromJson: _imageFromJson) String? image, String? color, String? score, int? price,@JsonKey(name: 'owner_id') String? ownerId, String? latitude, String? longitude,@JsonKey(name: 'date_from') String? dateFrom,@JsonKey(name: 'date_to') String? dateTo, CarStatus? status,@JsonKey(name: 'car_model') CarModel? carModel
 });
 
 
@@ -171,21 +169,20 @@ class __$CarDataCopyWithImpl<$Res>
 
 /// Create a copy of CarData
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? id = freezed,Object? color = freezed,Object? score = freezed,Object? price = freezed,Object? ownerId = freezed,Object? lattitude = freezed,Object? longitude = freezed,Object? dateFrom = freezed,Object? dateTo = freezed,Object? status = freezed,Object? createdAt = freezed,Object? updatedAt = freezed,Object? carModel = freezed,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? id = freezed,Object? image = freezed,Object? color = freezed,Object? score = freezed,Object? price = freezed,Object? ownerId = freezed,Object? latitude = freezed,Object? longitude = freezed,Object? dateFrom = freezed,Object? dateTo = freezed,Object? status = freezed,Object? carModel = freezed,}) {
   return _then(_CarData(
 id: freezed == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
+as String?,image: freezed == image ? _self.image : image // ignore: cast_nullable_to_non_nullable
 as String?,color: freezed == color ? _self.color : color // ignore: cast_nullable_to_non_nullable
 as String?,score: freezed == score ? _self.score : score // ignore: cast_nullable_to_non_nullable
 as String?,price: freezed == price ? _self.price : price // ignore: cast_nullable_to_non_nullable
 as int?,ownerId: freezed == ownerId ? _self.ownerId : ownerId // ignore: cast_nullable_to_non_nullable
-as String?,lattitude: freezed == lattitude ? _self.lattitude : lattitude // ignore: cast_nullable_to_non_nullable
+as String?,latitude: freezed == latitude ? _self.latitude : latitude // ignore: cast_nullable_to_non_nullable
 as String?,longitude: freezed == longitude ? _self.longitude : longitude // ignore: cast_nullable_to_non_nullable
 as String?,dateFrom: freezed == dateFrom ? _self.dateFrom : dateFrom // ignore: cast_nullable_to_non_nullable
 as String?,dateTo: freezed == dateTo ? _self.dateTo : dateTo // ignore: cast_nullable_to_non_nullable
 as String?,status: freezed == status ? _self.status : status // ignore: cast_nullable_to_non_nullable
-as CarStatus?,createdAt: freezed == createdAt ? _self.createdAt : createdAt // ignore: cast_nullable_to_non_nullable
-as String?,updatedAt: freezed == updatedAt ? _self.updatedAt : updatedAt // ignore: cast_nullable_to_non_nullable
-as String?,carModel: freezed == carModel ? _self.carModel : carModel // ignore: cast_nullable_to_non_nullable
+as CarStatus?,carModel: freezed == carModel ? _self.carModel : carModel // ignore: cast_nullable_to_non_nullable
 as CarModel?,
   ));
 }
@@ -209,7 +206,7 @@ $CarModelCopyWith<$Res>? get carModel {
 /// @nodoc
 mixin _$CarModel {
 
- String? get id; String? get title; CarBody? get body;@JsonKey(name: 'fuel_consumption') String? get fuelConsumption;@JsonKey(name: 'engine_capacity') String? get engineCapacity; Drive? get drive; Gearbox? get gearbox; FuelType? get fuel; int? get hp;@JsonKey(name: 'created_at') String? get createdAt;@JsonKey(name: 'updated_at') String? get updatedAt; BrandModel? get brand;
+ String? get id; String? get title; CarBody? get body;@JsonKey(name: 'fuel_consumption') String? get fuelConsumption;@JsonKey(name: 'engine_capacity') String? get engineCapacity; Drive? get drive; Gearbox? get gearbox; FuelType? get fuel; int? get hp; BrandModel? get brand;
 /// Create a copy of CarModel
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -222,16 +219,16 @@ $CarModelCopyWith<CarModel> get copyWith => _$CarModelCopyWithImpl<CarModel>(thi
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is CarModel&&(identical(other.id, id) || other.id == id)&&(identical(other.title, title) || other.title == title)&&(identical(other.body, body) || other.body == body)&&(identical(other.fuelConsumption, fuelConsumption) || other.fuelConsumption == fuelConsumption)&&(identical(other.engineCapacity, engineCapacity) || other.engineCapacity == engineCapacity)&&(identical(other.drive, drive) || other.drive == drive)&&(identical(other.gearbox, gearbox) || other.gearbox == gearbox)&&(identical(other.fuel, fuel) || other.fuel == fuel)&&(identical(other.hp, hp) || other.hp == hp)&&(identical(other.createdAt, createdAt) || other.createdAt == createdAt)&&(identical(other.updatedAt, updatedAt) || other.updatedAt == updatedAt)&&(identical(other.brand, brand) || other.brand == brand));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is CarModel&&(identical(other.id, id) || other.id == id)&&(identical(other.title, title) || other.title == title)&&(identical(other.body, body) || other.body == body)&&(identical(other.fuelConsumption, fuelConsumption) || other.fuelConsumption == fuelConsumption)&&(identical(other.engineCapacity, engineCapacity) || other.engineCapacity == engineCapacity)&&(identical(other.drive, drive) || other.drive == drive)&&(identical(other.gearbox, gearbox) || other.gearbox == gearbox)&&(identical(other.fuel, fuel) || other.fuel == fuel)&&(identical(other.hp, hp) || other.hp == hp)&&(identical(other.brand, brand) || other.brand == brand));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,id,title,body,fuelConsumption,engineCapacity,drive,gearbox,fuel,hp,createdAt,updatedAt,brand);
+int get hashCode => Object.hash(runtimeType,id,title,body,fuelConsumption,engineCapacity,drive,gearbox,fuel,hp,brand);
 
 @override
 String toString() {
-  return 'CarModel(id: $id, title: $title, body: $body, fuelConsumption: $fuelConsumption, engineCapacity: $engineCapacity, drive: $drive, gearbox: $gearbox, fuel: $fuel, hp: $hp, createdAt: $createdAt, updatedAt: $updatedAt, brand: $brand)';
+  return 'CarModel(id: $id, title: $title, body: $body, fuelConsumption: $fuelConsumption, engineCapacity: $engineCapacity, drive: $drive, gearbox: $gearbox, fuel: $fuel, hp: $hp, brand: $brand)';
 }
 
 
@@ -242,7 +239,7 @@ abstract mixin class $CarModelCopyWith<$Res>  {
   factory $CarModelCopyWith(CarModel value, $Res Function(CarModel) _then) = _$CarModelCopyWithImpl;
 @useResult
 $Res call({
- String? id, String? title, CarBody? body,@JsonKey(name: 'fuel_consumption') String? fuelConsumption,@JsonKey(name: 'engine_capacity') String? engineCapacity, Drive? drive, Gearbox? gearbox, FuelType? fuel, int? hp,@JsonKey(name: 'created_at') String? createdAt,@JsonKey(name: 'updated_at') String? updatedAt, BrandModel? brand
+ String? id, String? title, CarBody? body,@JsonKey(name: 'fuel_consumption') String? fuelConsumption,@JsonKey(name: 'engine_capacity') String? engineCapacity, Drive? drive, Gearbox? gearbox, FuelType? fuel, int? hp, BrandModel? brand
 });
 
 
@@ -259,7 +256,7 @@ class _$CarModelCopyWithImpl<$Res>
 
 /// Create a copy of CarModel
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? id = freezed,Object? title = freezed,Object? body = freezed,Object? fuelConsumption = freezed,Object? engineCapacity = freezed,Object? drive = freezed,Object? gearbox = freezed,Object? fuel = freezed,Object? hp = freezed,Object? createdAt = freezed,Object? updatedAt = freezed,Object? brand = freezed,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? id = freezed,Object? title = freezed,Object? body = freezed,Object? fuelConsumption = freezed,Object? engineCapacity = freezed,Object? drive = freezed,Object? gearbox = freezed,Object? fuel = freezed,Object? hp = freezed,Object? brand = freezed,}) {
   return _then(_self.copyWith(
 id: freezed == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
 as String?,title: freezed == title ? _self.title : title // ignore: cast_nullable_to_non_nullable
@@ -270,9 +267,7 @@ as String?,drive: freezed == drive ? _self.drive : drive // ignore: cast_nullabl
 as Drive?,gearbox: freezed == gearbox ? _self.gearbox : gearbox // ignore: cast_nullable_to_non_nullable
 as Gearbox?,fuel: freezed == fuel ? _self.fuel : fuel // ignore: cast_nullable_to_non_nullable
 as FuelType?,hp: freezed == hp ? _self.hp : hp // ignore: cast_nullable_to_non_nullable
-as int?,createdAt: freezed == createdAt ? _self.createdAt : createdAt // ignore: cast_nullable_to_non_nullable
-as String?,updatedAt: freezed == updatedAt ? _self.updatedAt : updatedAt // ignore: cast_nullable_to_non_nullable
-as String?,brand: freezed == brand ? _self.brand : brand // ignore: cast_nullable_to_non_nullable
+as int?,brand: freezed == brand ? _self.brand : brand // ignore: cast_nullable_to_non_nullable
 as BrandModel?,
   ));
 }
@@ -296,7 +291,7 @@ $BrandModelCopyWith<$Res>? get brand {
 @JsonSerializable()
 
 class _CarModel implements CarModel {
-  const _CarModel({this.id, this.title, this.body, @JsonKey(name: 'fuel_consumption') this.fuelConsumption, @JsonKey(name: 'engine_capacity') this.engineCapacity, this.drive, this.gearbox, this.fuel, this.hp, @JsonKey(name: 'created_at') this.createdAt, @JsonKey(name: 'updated_at') this.updatedAt, this.brand});
+  const _CarModel({this.id, this.title, this.body, @JsonKey(name: 'fuel_consumption') this.fuelConsumption, @JsonKey(name: 'engine_capacity') this.engineCapacity, this.drive, this.gearbox, this.fuel, this.hp, this.brand});
   factory _CarModel.fromJson(Map<String, dynamic> json) => _$CarModelFromJson(json);
 
 @override final  String? id;
@@ -308,8 +303,6 @@ class _CarModel implements CarModel {
 @override final  Gearbox? gearbox;
 @override final  FuelType? fuel;
 @override final  int? hp;
-@override@JsonKey(name: 'created_at') final  String? createdAt;
-@override@JsonKey(name: 'updated_at') final  String? updatedAt;
 @override final  BrandModel? brand;
 
 /// Create a copy of CarModel
@@ -325,16 +318,16 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _CarModel&&(identical(other.id, id) || other.id == id)&&(identical(other.title, title) || other.title == title)&&(identical(other.body, body) || other.body == body)&&(identical(other.fuelConsumption, fuelConsumption) || other.fuelConsumption == fuelConsumption)&&(identical(other.engineCapacity, engineCapacity) || other.engineCapacity == engineCapacity)&&(identical(other.drive, drive) || other.drive == drive)&&(identical(other.gearbox, gearbox) || other.gearbox == gearbox)&&(identical(other.fuel, fuel) || other.fuel == fuel)&&(identical(other.hp, hp) || other.hp == hp)&&(identical(other.createdAt, createdAt) || other.createdAt == createdAt)&&(identical(other.updatedAt, updatedAt) || other.updatedAt == updatedAt)&&(identical(other.brand, brand) || other.brand == brand));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _CarModel&&(identical(other.id, id) || other.id == id)&&(identical(other.title, title) || other.title == title)&&(identical(other.body, body) || other.body == body)&&(identical(other.fuelConsumption, fuelConsumption) || other.fuelConsumption == fuelConsumption)&&(identical(other.engineCapacity, engineCapacity) || other.engineCapacity == engineCapacity)&&(identical(other.drive, drive) || other.drive == drive)&&(identical(other.gearbox, gearbox) || other.gearbox == gearbox)&&(identical(other.fuel, fuel) || other.fuel == fuel)&&(identical(other.hp, hp) || other.hp == hp)&&(identical(other.brand, brand) || other.brand == brand));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,id,title,body,fuelConsumption,engineCapacity,drive,gearbox,fuel,hp,createdAt,updatedAt,brand);
+int get hashCode => Object.hash(runtimeType,id,title,body,fuelConsumption,engineCapacity,drive,gearbox,fuel,hp,brand);
 
 @override
 String toString() {
-  return 'CarModel(id: $id, title: $title, body: $body, fuelConsumption: $fuelConsumption, engineCapacity: $engineCapacity, drive: $drive, gearbox: $gearbox, fuel: $fuel, hp: $hp, createdAt: $createdAt, updatedAt: $updatedAt, brand: $brand)';
+  return 'CarModel(id: $id, title: $title, body: $body, fuelConsumption: $fuelConsumption, engineCapacity: $engineCapacity, drive: $drive, gearbox: $gearbox, fuel: $fuel, hp: $hp, brand: $brand)';
 }
 
 
@@ -345,7 +338,7 @@ abstract mixin class _$CarModelCopyWith<$Res> implements $CarModelCopyWith<$Res>
   factory _$CarModelCopyWith(_CarModel value, $Res Function(_CarModel) _then) = __$CarModelCopyWithImpl;
 @override @useResult
 $Res call({
- String? id, String? title, CarBody? body,@JsonKey(name: 'fuel_consumption') String? fuelConsumption,@JsonKey(name: 'engine_capacity') String? engineCapacity, Drive? drive, Gearbox? gearbox, FuelType? fuel, int? hp,@JsonKey(name: 'created_at') String? createdAt,@JsonKey(name: 'updated_at') String? updatedAt, BrandModel? brand
+ String? id, String? title, CarBody? body,@JsonKey(name: 'fuel_consumption') String? fuelConsumption,@JsonKey(name: 'engine_capacity') String? engineCapacity, Drive? drive, Gearbox? gearbox, FuelType? fuel, int? hp, BrandModel? brand
 });
 
 
@@ -362,7 +355,7 @@ class __$CarModelCopyWithImpl<$Res>
 
 /// Create a copy of CarModel
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? id = freezed,Object? title = freezed,Object? body = freezed,Object? fuelConsumption = freezed,Object? engineCapacity = freezed,Object? drive = freezed,Object? gearbox = freezed,Object? fuel = freezed,Object? hp = freezed,Object? createdAt = freezed,Object? updatedAt = freezed,Object? brand = freezed,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? id = freezed,Object? title = freezed,Object? body = freezed,Object? fuelConsumption = freezed,Object? engineCapacity = freezed,Object? drive = freezed,Object? gearbox = freezed,Object? fuel = freezed,Object? hp = freezed,Object? brand = freezed,}) {
   return _then(_CarModel(
 id: freezed == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
 as String?,title: freezed == title ? _self.title : title // ignore: cast_nullable_to_non_nullable
@@ -373,9 +366,7 @@ as String?,drive: freezed == drive ? _self.drive : drive // ignore: cast_nullabl
 as Drive?,gearbox: freezed == gearbox ? _self.gearbox : gearbox // ignore: cast_nullable_to_non_nullable
 as Gearbox?,fuel: freezed == fuel ? _self.fuel : fuel // ignore: cast_nullable_to_non_nullable
 as FuelType?,hp: freezed == hp ? _self.hp : hp // ignore: cast_nullable_to_non_nullable
-as int?,createdAt: freezed == createdAt ? _self.createdAt : createdAt // ignore: cast_nullable_to_non_nullable
-as String?,updatedAt: freezed == updatedAt ? _self.updatedAt : updatedAt // ignore: cast_nullable_to_non_nullable
-as String?,brand: freezed == brand ? _self.brand : brand // ignore: cast_nullable_to_non_nullable
+as int?,brand: freezed == brand ? _self.brand : brand // ignore: cast_nullable_to_non_nullable
 as BrandModel?,
   ));
 }
@@ -399,7 +390,7 @@ $BrandModelCopyWith<$Res>? get brand {
 /// @nodoc
 mixin _$BrandModel {
 
- String? get id; String? get title;@JsonKey(name: 'created_at') String? get createdAt;@JsonKey(name: 'updated_at') String? get updatedAt;
+ String? get id; String? get title;
 /// Create a copy of BrandModel
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -412,16 +403,16 @@ $BrandModelCopyWith<BrandModel> get copyWith => _$BrandModelCopyWithImpl<BrandMo
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is BrandModel&&(identical(other.id, id) || other.id == id)&&(identical(other.title, title) || other.title == title)&&(identical(other.createdAt, createdAt) || other.createdAt == createdAt)&&(identical(other.updatedAt, updatedAt) || other.updatedAt == updatedAt));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is BrandModel&&(identical(other.id, id) || other.id == id)&&(identical(other.title, title) || other.title == title));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,id,title,createdAt,updatedAt);
+int get hashCode => Object.hash(runtimeType,id,title);
 
 @override
 String toString() {
-  return 'BrandModel(id: $id, title: $title, createdAt: $createdAt, updatedAt: $updatedAt)';
+  return 'BrandModel(id: $id, title: $title)';
 }
 
 
@@ -432,7 +423,7 @@ abstract mixin class $BrandModelCopyWith<$Res>  {
   factory $BrandModelCopyWith(BrandModel value, $Res Function(BrandModel) _then) = _$BrandModelCopyWithImpl;
 @useResult
 $Res call({
- String? id, String? title,@JsonKey(name: 'created_at') String? createdAt,@JsonKey(name: 'updated_at') String? updatedAt
+ String? id, String? title
 });
 
 
@@ -449,12 +440,10 @@ class _$BrandModelCopyWithImpl<$Res>
 
 /// Create a copy of BrandModel
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? id = freezed,Object? title = freezed,Object? createdAt = freezed,Object? updatedAt = freezed,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? id = freezed,Object? title = freezed,}) {
   return _then(_self.copyWith(
 id: freezed == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
 as String?,title: freezed == title ? _self.title : title // ignore: cast_nullable_to_non_nullable
-as String?,createdAt: freezed == createdAt ? _self.createdAt : createdAt // ignore: cast_nullable_to_non_nullable
-as String?,updatedAt: freezed == updatedAt ? _self.updatedAt : updatedAt // ignore: cast_nullable_to_non_nullable
 as String?,
   ));
 }
@@ -466,13 +455,11 @@ as String?,
 @JsonSerializable()
 
 class _BrandModel implements BrandModel {
-  const _BrandModel({this.id, this.title, @JsonKey(name: 'created_at') this.createdAt, @JsonKey(name: 'updated_at') this.updatedAt});
+  const _BrandModel({this.id, this.title});
   factory _BrandModel.fromJson(Map<String, dynamic> json) => _$BrandModelFromJson(json);
 
 @override final  String? id;
 @override final  String? title;
-@override@JsonKey(name: 'created_at') final  String? createdAt;
-@override@JsonKey(name: 'updated_at') final  String? updatedAt;
 
 /// Create a copy of BrandModel
 /// with the given fields replaced by the non-null parameter values.
@@ -487,16 +474,16 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _BrandModel&&(identical(other.id, id) || other.id == id)&&(identical(other.title, title) || other.title == title)&&(identical(other.createdAt, createdAt) || other.createdAt == createdAt)&&(identical(other.updatedAt, updatedAt) || other.updatedAt == updatedAt));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _BrandModel&&(identical(other.id, id) || other.id == id)&&(identical(other.title, title) || other.title == title));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,id,title,createdAt,updatedAt);
+int get hashCode => Object.hash(runtimeType,id,title);
 
 @override
 String toString() {
-  return 'BrandModel(id: $id, title: $title, createdAt: $createdAt, updatedAt: $updatedAt)';
+  return 'BrandModel(id: $id, title: $title)';
 }
 
 
@@ -507,7 +494,7 @@ abstract mixin class _$BrandModelCopyWith<$Res> implements $BrandModelCopyWith<$
   factory _$BrandModelCopyWith(_BrandModel value, $Res Function(_BrandModel) _then) = __$BrandModelCopyWithImpl;
 @override @useResult
 $Res call({
- String? id, String? title,@JsonKey(name: 'created_at') String? createdAt,@JsonKey(name: 'updated_at') String? updatedAt
+ String? id, String? title
 });
 
 
@@ -524,12 +511,10 @@ class __$BrandModelCopyWithImpl<$Res>
 
 /// Create a copy of BrandModel
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? id = freezed,Object? title = freezed,Object? createdAt = freezed,Object? updatedAt = freezed,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? id = freezed,Object? title = freezed,}) {
   return _then(_BrandModel(
 id: freezed == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
 as String?,title: freezed == title ? _self.title : title // ignore: cast_nullable_to_non_nullable
-as String?,createdAt: freezed == createdAt ? _self.createdAt : createdAt // ignore: cast_nullable_to_non_nullable
-as String?,updatedAt: freezed == updatedAt ? _self.updatedAt : updatedAt // ignore: cast_nullable_to_non_nullable
 as String?,
   ));
 }
@@ -541,7 +526,7 @@ as String?,
 /// @nodoc
 mixin _$CarCellModel {
 
- String? get id; int? get price;@JsonKey(name: 'car_model', fromJson: _titleFromJson) String? get title; String? get score;
+@JsonKey(name: 'attachments', fromJson: _imageFromJson) String? get image;@JsonKey(name: 'owner_id') String? get ownerId; String? get id; int? get price;@JsonKey(name: 'car_model', fromJson: _titleFromJson) String? get title; String? get score;
 /// Create a copy of CarCellModel
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -554,16 +539,16 @@ $CarCellModelCopyWith<CarCellModel> get copyWith => _$CarCellModelCopyWithImpl<C
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is CarCellModel&&(identical(other.id, id) || other.id == id)&&(identical(other.price, price) || other.price == price)&&(identical(other.title, title) || other.title == title)&&(identical(other.score, score) || other.score == score));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is CarCellModel&&(identical(other.image, image) || other.image == image)&&(identical(other.ownerId, ownerId) || other.ownerId == ownerId)&&(identical(other.id, id) || other.id == id)&&(identical(other.price, price) || other.price == price)&&(identical(other.title, title) || other.title == title)&&(identical(other.score, score) || other.score == score));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,id,price,title,score);
+int get hashCode => Object.hash(runtimeType,image,ownerId,id,price,title,score);
 
 @override
 String toString() {
-  return 'CarCellModel(id: $id, price: $price, title: $title, score: $score)';
+  return 'CarCellModel(image: $image, ownerId: $ownerId, id: $id, price: $price, title: $title, score: $score)';
 }
 
 
@@ -574,7 +559,7 @@ abstract mixin class $CarCellModelCopyWith<$Res>  {
   factory $CarCellModelCopyWith(CarCellModel value, $Res Function(CarCellModel) _then) = _$CarCellModelCopyWithImpl;
 @useResult
 $Res call({
- String? id, int? price,@JsonKey(name: 'car_model', fromJson: _titleFromJson) String? title, String? score
+@JsonKey(name: 'attachments', fromJson: _imageFromJson) String? image,@JsonKey(name: 'owner_id') String? ownerId, String? id, int? price,@JsonKey(name: 'car_model', fromJson: _titleFromJson) String? title, String? score
 });
 
 
@@ -591,9 +576,11 @@ class _$CarCellModelCopyWithImpl<$Res>
 
 /// Create a copy of CarCellModel
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? id = freezed,Object? price = freezed,Object? title = freezed,Object? score = freezed,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? image = freezed,Object? ownerId = freezed,Object? id = freezed,Object? price = freezed,Object? title = freezed,Object? score = freezed,}) {
   return _then(_self.copyWith(
-id: freezed == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
+image: freezed == image ? _self.image : image // ignore: cast_nullable_to_non_nullable
+as String?,ownerId: freezed == ownerId ? _self.ownerId : ownerId // ignore: cast_nullable_to_non_nullable
+as String?,id: freezed == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
 as String?,price: freezed == price ? _self.price : price // ignore: cast_nullable_to_non_nullable
 as int?,title: freezed == title ? _self.title : title // ignore: cast_nullable_to_non_nullable
 as String?,score: freezed == score ? _self.score : score // ignore: cast_nullable_to_non_nullable
@@ -608,9 +595,11 @@ as String?,
 @JsonSerializable()
 
 class _CarCellModel implements CarCellModel {
-  const _CarCellModel({this.id, this.price, @JsonKey(name: 'car_model', fromJson: _titleFromJson) this.title, this.score});
+  const _CarCellModel({@JsonKey(name: 'attachments', fromJson: _imageFromJson) this.image, @JsonKey(name: 'owner_id') this.ownerId, this.id, this.price, @JsonKey(name: 'car_model', fromJson: _titleFromJson) this.title, this.score});
   factory _CarCellModel.fromJson(Map<String, dynamic> json) => _$CarCellModelFromJson(json);
 
+@override@JsonKey(name: 'attachments', fromJson: _imageFromJson) final  String? image;
+@override@JsonKey(name: 'owner_id') final  String? ownerId;
 @override final  String? id;
 @override final  int? price;
 @override@JsonKey(name: 'car_model', fromJson: _titleFromJson) final  String? title;
@@ -629,16 +618,16 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _CarCellModel&&(identical(other.id, id) || other.id == id)&&(identical(other.price, price) || other.price == price)&&(identical(other.title, title) || other.title == title)&&(identical(other.score, score) || other.score == score));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _CarCellModel&&(identical(other.image, image) || other.image == image)&&(identical(other.ownerId, ownerId) || other.ownerId == ownerId)&&(identical(other.id, id) || other.id == id)&&(identical(other.price, price) || other.price == price)&&(identical(other.title, title) || other.title == title)&&(identical(other.score, score) || other.score == score));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,id,price,title,score);
+int get hashCode => Object.hash(runtimeType,image,ownerId,id,price,title,score);
 
 @override
 String toString() {
-  return 'CarCellModel(id: $id, price: $price, title: $title, score: $score)';
+  return 'CarCellModel(image: $image, ownerId: $ownerId, id: $id, price: $price, title: $title, score: $score)';
 }
 
 
@@ -649,7 +638,7 @@ abstract mixin class _$CarCellModelCopyWith<$Res> implements $CarCellModelCopyWi
   factory _$CarCellModelCopyWith(_CarCellModel value, $Res Function(_CarCellModel) _then) = __$CarCellModelCopyWithImpl;
 @override @useResult
 $Res call({
- String? id, int? price,@JsonKey(name: 'car_model', fromJson: _titleFromJson) String? title, String? score
+@JsonKey(name: 'attachments', fromJson: _imageFromJson) String? image,@JsonKey(name: 'owner_id') String? ownerId, String? id, int? price,@JsonKey(name: 'car_model', fromJson: _titleFromJson) String? title, String? score
 });
 
 
@@ -666,9 +655,11 @@ class __$CarCellModelCopyWithImpl<$Res>
 
 /// Create a copy of CarCellModel
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? id = freezed,Object? price = freezed,Object? title = freezed,Object? score = freezed,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? image = freezed,Object? ownerId = freezed,Object? id = freezed,Object? price = freezed,Object? title = freezed,Object? score = freezed,}) {
   return _then(_CarCellModel(
-id: freezed == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
+image: freezed == image ? _self.image : image // ignore: cast_nullable_to_non_nullable
+as String?,ownerId: freezed == ownerId ? _self.ownerId : ownerId // ignore: cast_nullable_to_non_nullable
+as String?,id: freezed == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
 as String?,price: freezed == price ? _self.price : price // ignore: cast_nullable_to_non_nullable
 as int?,title: freezed == title ? _self.title : title // ignore: cast_nullable_to_non_nullable
 as String?,score: freezed == score ? _self.score : score // ignore: cast_nullable_to_non_nullable

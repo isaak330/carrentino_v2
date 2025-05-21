@@ -1,4 +1,5 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:image_picker/image_picker.dart';
 
 part 'car_data_models.freezed.dart';
 part 'car_data_models.g.dart';
@@ -87,22 +88,20 @@ enum FuelType {
 abstract class CarData with _$CarData {
   const factory CarData({
     String? id,
+    @JsonKey(name: 'attachments', fromJson: _imageFromJson) String? image,
     String? color,
     String? score,
     int? price,
     @JsonKey(name: 'owner_id') String? ownerId,
-    String? lattitude,
+    String? latitude,
     String? longitude,
-    String? dateFrom,
-    String? dateTo,
+    @JsonKey(name: 'date_from') String? dateFrom,
+    @JsonKey(name: 'date_to') String? dateTo,
     CarStatus? status,
-    @JsonKey(name: 'created_at') String? createdAt,
-    @JsonKey(name: 'updated_at') String? updatedAt,
-    CarModel? carModel,
+    @JsonKey(name: 'car_model') CarModel? carModel,
   }) = _CarData;
 
-  factory CarData.fromJson(Map<String, dynamic> json) =>
-      _$CarDataFromJson(json);
+  factory CarData.fromJson(Map<String, dynamic> json) => _$CarDataFromJson(json);
 }
 
 @freezed
@@ -117,44 +116,42 @@ abstract class CarModel with _$CarModel {
     Gearbox? gearbox,
     FuelType? fuel,
     int? hp,
-    @JsonKey(name: 'created_at') String? createdAt,
-    @JsonKey(name: 'updated_at') String? updatedAt,
     BrandModel? brand,
   }) = _CarModel;
 
-  factory CarModel.fromJson(Map<String, dynamic> json) =>
-      _$CarModelFromJson(json);
+  factory CarModel.fromJson(Map<String, dynamic> json) => _$CarModelFromJson(json);
 }
 
 @freezed
 abstract class BrandModel with _$BrandModel {
-  const factory BrandModel({
-    String? id,
-    String? title,
-    @JsonKey(name: 'created_at') String? createdAt,
-    @JsonKey(name: 'updated_at') String? updatedAt,
-  }) = _BrandModel;
+  const factory BrandModel({String? id, String? title}) = _BrandModel;
 
-  factory BrandModel.fromJson(Map<String, dynamic> json) =>
-      _$BrandModelFromJson(json);
+  factory BrandModel.fromJson(Map<String, dynamic> json) => _$BrandModelFromJson(json);
 }
 
 @freezed
 abstract class CarCellModel with _$CarCellModel {
   const factory CarCellModel({
+    @JsonKey(name: 'attachments', fromJson: _imageFromJson) String? image,
+    @JsonKey(name: 'owner_id') String? ownerId,
     String? id,
     int? price,
     @JsonKey(name: 'car_model', fromJson: _titleFromJson) String? title,
     String? score,
   }) = _CarCellModel;
 
-  factory CarCellModel.fromJson(Map<String, dynamic> json) =>
-      _$CarCellModelFromJson(json);
+  factory CarCellModel.fromJson(Map<String, dynamic> json) => _$CarCellModelFromJson(json);
 }
 
 String _titleFromJson(Map<String, dynamic> json) {
-  print(json['brand']['title']);
-  print(json['title']);
-  print("+++AAAAA+++ $json");
   return json['brand']['title'] + " " + json['title'];
+}
+
+String? _imageFromJson(List<dynamic> json) {
+  print("++++++2+++++++  $json");
+  if (json.length > 0) {
+    return (json[0]['attachment']);
+  } else {
+    return null;
+  }
 }

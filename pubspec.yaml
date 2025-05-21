@@ -21,6 +21,7 @@ dependencies:
   yandex_maps_mapkit: ^4.11.0-beta
   pinput: ^5.0.1
   shared_preferences: ^2.5.3
+  bloc_test: ^10.0.0
 
 dev_dependencies:
   flutter_test:
@@ -30,6 +31,8 @@ dev_dependencies:
   json_serializable: ^6.9.5
   custom_lint: ^0.7.5
   freezed_lint: ^0.0.9
+  mockito: ^5.4.4
+  mocktail: ^1.0.3
 
 flutter:
   uses-material-design: true
